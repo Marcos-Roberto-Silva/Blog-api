@@ -12,9 +12,9 @@ const createUser = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    Users.associate = (models) => {
-        console.log(models);
-    };
+    // Users.associate = (models) => {
+    //     console.log(models);
+    // };
 
     return Users;
 };

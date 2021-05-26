@@ -1,3 +1,4 @@
+const jwtFunc = require('../helpers/jwt');
 const servicesUsers = require('../services/userServices');
 // const getUserController = async (_req, res) => {
 //     const user = await servicesUsers.getAllOnServices();
@@ -19,7 +20,10 @@ const createUserController = async (req, res) => {
     if (users.code) {
         return res.status(users.code).json({ message: users.codeMsg });
     }
-    res.status(200).json(users);
+
+    const tokenResult = await jwtFunc(users);
+    
+    res.status(201).json(tokenResult);
 };
 
 module.exports = {

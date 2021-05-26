@@ -1,5 +1,13 @@
-const validationField = require('./validationField');
+const validationFieldName = require('./validationFieldName');
+const validationFieldEmail = require('./validationFieldEmail');
+const validationFieldsPassword = require('./validationFieldsPassword');
+const emailIsRequired = require('./emailIsRequired');
+const passwordIsRequired = require('./passwordIsRequired');
 
 module.exports = {
-    validationField,
+    validationFieldName,
+    validationFieldEmail,
+    validationFieldsPassword,
+    emailIsRequired,
+    passwordIsRequired,
 };
