@@ -4,8 +4,16 @@ const helper = require('../helpers/isValid');
 
 const getAllUsers = async () => {
     const users = await User.findAll();
-    console.log(users);
     return users;
+};
+
+const getUserById = async (id) => {
+    const user = await User.findByPk(id);
+    const userNotFound = await helper.searchById(user);
+    if (userNotFound.code) {
+        return userNotFound;
+    }
+    return user;
 };
 
 const getUserOnServices = async (email) => {
@@ -56,4 +64,5 @@ module.exports = {
     getUserOnServices,
     userLoginOnServices,
     getAllUsers,
+    getUserById,
 };

@@ -1,5 +1,7 @@
 const jwtFunc = require('../helpers/jwt');
 const servicesUsers = require('../services/userServices');
+const errCode = require('../helpers/codeError');
+const errMessage = require('../helpers/messageError');
 
 const userValidation = async (email) => {
     const user = await servicesUsers.getUserOnServices(email);
@@ -9,6 +11,15 @@ const userValidation = async (email) => {
 const getAllUsers = async (req, res) => {
     const users = await servicesUsers.getAllUsers();
     res.status(200).json(users);
+};
+
+const getUserById = async (req, res) => {
+    const user = await servicesUsers.getUserById(req.params.id);
+    console.log(user);
+    if (user.code) {
+        return res.status(user.code).json({ message: user.codeMsg });
+    }
+    res.status(200).json(user);
 };
 
 const userLogin = async (req, res) => {
@@ -52,4 +63,5 @@ module.exports = {
     userValidation,
     userLogin,
     getAllUsers,
+    getUserById,
 };

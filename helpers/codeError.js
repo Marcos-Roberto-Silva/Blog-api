@@ -3,6 +3,7 @@ const code = {
     badRequest: 400,
     forbidden: 403,
     conflicts: 409,
+    notFound: 404,
 };
 
 module.exports = code;

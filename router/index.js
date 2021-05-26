@@ -27,5 +27,5 @@ router.post('/login', body('email').isEmail().notEmpty(),
                       userController.userLogin);
 
 router.get('/user', auth, userController.getAllUsers);
-
+router.get('/user/:id', auth, userController.getUserById);
 module.exports = router;

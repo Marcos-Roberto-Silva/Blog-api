@@ -21,10 +21,18 @@ const userSearch = async (user) => {
   return false;
 };
 
+const searchById = async (user) => {
+  if (user === null) {
+    return createError(code.notFound, message.userDoesNotExists);
+  }
+  return false;
+};
+
 module.exports = {
   userAlreadyExist,
   createError,
   userSearch,
+  searchById,
   // testForEmail,
   // testForPassword,
 };
