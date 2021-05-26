@@ -1,7 +1,5 @@
 const jwtFunc = require('../helpers/jwt');
 const servicesUsers = require('../services/userServices');
-const errCode = require('../helpers/codeError');
-const errMessage = require('../helpers/messageError');
 
 const userValidation = async (email) => {
     const user = await servicesUsers.getUserOnServices(email);
