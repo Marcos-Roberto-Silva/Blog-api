@@ -9,14 +9,14 @@ module.exports = {
     dialect: 'mysql',
   },
   test: {
-    username: process.env.HOSTNAME,
+    username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: 'blogs_api',
     host: process.env.HOSTNAME,
     dialect: 'mysql',
   },
   production: {
-    username: process.env.HOSTNAME,
+    username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: 'blogs_api',
     host: process.env.HOSTNAME,

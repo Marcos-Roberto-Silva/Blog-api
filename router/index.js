@@ -15,5 +15,7 @@ router.post('/user', body('displayName').isString().isLength({ min: 8 }),
                  validation.emailIsRequired,
                  validation.passwordIsRequired,
                  userController.createUserController);
+                 
+router.post('/user');
 
 module.exports = router;

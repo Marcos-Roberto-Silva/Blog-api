@@ -27,4 +27,5 @@ const createUserOnServices = async (payload) => {
 
 module.exports = {
     createUserOnServices,
+    getUseOnServices,
 };

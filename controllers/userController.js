@@ -1,9 +1,10 @@
 const jwtFunc = require('../helpers/jwt');
 const servicesUsers = require('../services/userServices');
-// const getUserController = async (_req, res) => {
-//     const user = await servicesUsers.getAllOnServices();
-//     res.status(200).json(user);
-// };
+
+const userValidation = async (email) => {
+    const user = await servicesUsers.getUseOnServices(email);
+    return user;
+};
 
 const createUserController = async (req, res) => {
     const { displayName, email, password, image } = req.body;
@@ -22,10 +23,11 @@ const createUserController = async (req, res) => {
     }
 
     const tokenResult = await jwtFunc(users);
-    
+
     res.status(201).json(tokenResult);
 };
 
 module.exports = {
     createUserController,
+    userValidation,
 };
