@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { body } = require('express-validator');
 const userController = require('../controllers/userController');
 const validation = require('../middleware');
+const auth = require('../auth/jwtValidator');
 // const auth = require('../auth/jwtValidator');
 
 const router = Router();
@@ -24,5 +25,7 @@ router.post('/login', body('email').isEmail().notEmpty(),
                       validation.emailCannotBeEmpty,
                       validation.passwordCannotBeEmpty,
                       userController.userLogin);
+
+router.get('/user', auth, userController.getAllUsers);
 
 module.exports = router;

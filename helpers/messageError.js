@@ -9,4 +9,6 @@ module.exports = {
     invalidFields: 'Invalid fields',
     emailCannotBeEmpty: '"email" is not allowed to be empty',
     passwordCannotBeEmpty: '"password" is not allowed to be empty',
+    tokenNotFound: 'Token not found',
+    invalidToken: 'Expired or invalid token',
 };
