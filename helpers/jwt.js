@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'doNotStopDancing';
+const secret = 'justKnowThatNotknow';
 
 const jwtFunc = async (user) => {
     const jwtConfig = {

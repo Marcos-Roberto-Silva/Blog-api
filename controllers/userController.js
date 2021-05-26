@@ -6,6 +6,19 @@ const userValidation = async (email) => {
     return user;
 };
 
+const userLogin = async (req, res) => {
+    const { email } = req.body;
+    const payload = { email };
+
+    const user = await servicesUsers.userLoginOnServices(payload);
+
+    if (user.code) {
+        return res.status(user.code).json({ message: user.codeMsg });
+    }
+    const tokenResult = await jwtFunc(payload);
+    res.status(200).json({ token: tokenResult });
+};
+
 const createUserController = async (req, res) => {
     const { displayName, email, password, image } = req.body;
 
@@ -21,8 +34,10 @@ const createUserController = async (req, res) => {
     if (users.code) {
         return res.status(users.code).json({ message: users.codeMsg });
     }
+    const { displayName: name, email: Email } = users;
 
-    const tokenResult = await jwtFunc(users);
+    const data = { name, Email };
+    const tokenResult = await jwtFunc(data);
 
     res.status(201).json(tokenResult);
 };
@@ -30,4 +45,5 @@ const createUserController = async (req, res) => {
 module.exports = {
     createUserController,
     userValidation,
+    userLogin,
 };

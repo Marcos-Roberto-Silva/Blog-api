@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const decodeJwt = (token) => {
-    const secret = 'dontstopdancing';
+    const secret = 'justKnowThatNotknow';
     const decode = jwt.verify(token, secret);
-
     return decode;
 };
 

@@ -10,6 +10,26 @@ const getUseOnServices = async (email) => {
             },
         },
     });
+
+    return user;
+};
+
+const userLoginOnServices = async (obj) => {
+    const { email } = obj;
+    const user = await User.findAll({
+        where: {
+            email: {
+                [Op.like]: `%${email}%`,
+            },
+        },
+    });
+
+    const checkUserLogin = await helper.userSearch(user);
+    console.log(checkUserLogin);
+    if (checkUserLogin.code) {
+        return checkUserLogin;
+    }
+
     return user;
 };
 
@@ -28,4 +48,5 @@ const createUserOnServices = async (payload) => {
 module.exports = {
     createUserOnServices,
     getUseOnServices,
+    userLoginOnServices,
 };

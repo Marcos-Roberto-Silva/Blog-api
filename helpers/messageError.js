@@ -6,4 +6,7 @@ module.exports = {
     passwordRequired: '"password" is required',
     userAlreadyExists: 'User already registered',
     invalidEmail: 'User already registered',
+    invalidFields: 'Invalid fields',
+    emailCannotBeEmpty: '"email" is not allowed to be empty',
+    passwordCannotBeEmpty: '"password" is not allowed to be empty',
 };

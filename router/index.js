@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { body } = require('express-validator');
 const userController = require('../controllers/userController');
 const validation = require('../middleware');
+// const auth = require('../auth/jwtValidator');
 
 const router = Router();
 
@@ -16,6 +17,12 @@ router.post('/user', body('displayName').isString().isLength({ min: 8 }),
                  validation.passwordIsRequired,
                  userController.createUserController);
                  
-router.post('/user');
+router.post('/login', body('email').isEmail().notEmpty(),
+                      body('password').notEmpty().isLength({ min: 6 }),
+                      validation.emailIsRequired,
+                      validation.passwordIsRequired,
+                      validation.emailCannotBeEmpty,
+                      validation.passwordCannotBeEmpty,
+                      userController.userLogin);
 
 module.exports = router;
