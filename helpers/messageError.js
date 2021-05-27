@@ -12,4 +12,5 @@ module.exports = {
     tokenNotFound: 'Token not found',
     invalidToken: 'Expired or invalid token',
     userDoesNotExists: 'User does not exist',
+    fieldNameIsRequired: '"name" is required',
 };
