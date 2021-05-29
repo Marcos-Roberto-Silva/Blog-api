@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'justKnowThatNotknow';
+const secret = 'nk-myt67/34';
 
 const jwtFunc = async (user) => {
     const jwtConfig = {

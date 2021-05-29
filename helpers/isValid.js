@@ -14,6 +14,14 @@ const userAlreadyExist = async (user) => {
   return createError(code.conflicts, message.userAlreadyExists);
 };
 
+const categoryExist = async (categories) => {
+  console.log(categories.length);
+  if (categories.length === 0) {
+    return createError(code.badRequest, message.categoryNotFound);
+  }
+  return false;
+};
+
 const userSearch = async (user) => {
   if (user.length === 0) {
     return createError(code.badRequest, message.invalidFields);
@@ -33,6 +41,7 @@ module.exports = {
   createError,
   userSearch,
   searchById,
+  categoryExist,
   // testForEmail,
   // testForPassword,
 };

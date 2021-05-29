@@ -6,9 +6,9 @@ const createCategories = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    Categories.associate = (models) => {
-        console.log(models);
-    };
+    // Categories.associate = (models) => {
+    //     console.log(models);
+    // };
 
     return Categories;
 };

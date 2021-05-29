@@ -29,6 +29,7 @@ const userLogin = async (req, res) => {
     if (user.code) {
         return res.status(user.code).json({ message: user.codeMsg });
     }
+    
     const tokenResult = await jwtFunc(payload);
     res.status(200).json({ token: tokenResult });
 };

@@ -1,6 +1,13 @@
 const { Op } = require('sequelize');
-const { User } = require('../models');
+const { User, BlogPost } = require('../models');
 const helper = require('../helpers/isValid');
+
+const getUserPostOnServices = async (id) => {
+    const userPost = await User.findByPk(id, {
+       include: { model: BlogPost, as: 'blogposts' },
+    });
+    return userPost;
+};
 
 const getAllUsers = async () => {
     const users = await User.findAll();
@@ -63,6 +70,7 @@ module.exports = {
     createUserOnServices,
     getUserOnServices,
     userLoginOnServices,
+    getUserPostOnServices,
     getAllUsers,
     getUserById,
 };

@@ -13,4 +13,8 @@ module.exports = {
     invalidToken: 'Expired or invalid token',
     userDoesNotExists: 'User does not exist',
     fieldNameIsRequired: '"name" is required',
+    fieldTitleIsRequired: '"title" is required',
+    fieldContentIsRequired: '"content" is required',
+    fieldCategoryIdIsRequired: '"categoryIds" is required',
+    categoryNotFound: '"categoryIds" not found',
 };

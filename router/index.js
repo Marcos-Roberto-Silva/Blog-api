@@ -1,7 +1,9 @@
 const { Router } = require('express');
 const { body } = require('express-validator');
 const userController = require('../controllers/userController');
+const listUserPost = require('../controllers/listUserPostController');
 const categoryController = require('../controllers/categoryController');
+const postController = require('../controllers/blogPostController');
 const validation = require('../middleware');
 const auth = require('../auth/jwtValidator');
 // const auth = require('../auth/jwtValidator');
@@ -31,8 +33,17 @@ router.post('/login', body('email').isEmail().notEmpty(),
                       validation.passwordCannotBeEmpty,
                       userController.userLogin);
 
+router.post('/post', body('title').notEmpty(),
+                     body('categoryIds').notEmpty(),
+                     body('content').notEmpty(),
+                     auth, validation.fieldTitleIsRequired, 
+                           validation.contentIsRequired,
+                           validation.fieldCategoryIdIsRequired,
+                           postController.createBlogPost);
+
 router.get('/user', auth, userController.getAllUsers);
 router.get('/user/:id', auth, userController.getUserById);
 router.get('/categories', auth, categoryController.getAllCategories);
+router.get('/userPost/:id', listUserPost.getListUserPosts); // req - 9
 
 module.exports = router;
