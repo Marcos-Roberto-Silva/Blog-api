@@ -1,3 +1,4 @@
+const { Sequelize } = require('sequelize');
 const { BlogPost, Category, User, PostsCategories } = require('../models');
 const helper = require('../helpers/isValid');
 
@@ -18,10 +19,25 @@ const createBlogPost = async (payload) => {
 
     categoryId.map((categoriesId) => PostsCategories.create({ postId, categoryId: categoriesId }));
     const data = { postId, userId };
-    
+
     return data;
+};
+
+const getPosts = async () => {
+    // const posts = await BlogPost.findAll({ include: { 
+    //     model: User, as: 'user', attributes: { exclude: ['password'] },
+    //  } }, { });
+
+    const posts = await BlogPost.findAll({
+        include: [{
+            model: User, 
+            as: 'user',
+        }],
+    });
+    return posts;
 };
 
 module.exports = {
     createBlogPost,
+    getPosts,
 };

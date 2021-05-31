@@ -4,6 +4,7 @@ const userController = require('../controllers/userController');
 const listUserPost = require('../controllers/listUserPostController');
 const categoryController = require('../controllers/categoryController');
 const postController = require('../controllers/blogPostController');
+const getPosts = require('../controllers/blogPostController');
 const validation = require('../middleware');
 const auth = require('../auth/jwtValidator');
 // const auth = require('../auth/jwtValidator');
@@ -11,6 +12,7 @@ const auth = require('../auth/jwtValidator');
 const router = Router();
 
 // router.get('/', userController.getUsersController);
+router.get('/post', getPosts.getPosts);
 router.post('/categories', auth, 
                            validation.fieldNameIsRequired, 
                            categoryController.createCategory);

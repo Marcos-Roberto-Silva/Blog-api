@@ -15,7 +15,7 @@ const userAlreadyExist = async (user) => {
 };
 
 const categoryExist = async (categories) => {
-  console.log(categories.length);
+  
   if (categories.length === 0) {
     return createError(code.badRequest, message.categoryNotFound);
   }
