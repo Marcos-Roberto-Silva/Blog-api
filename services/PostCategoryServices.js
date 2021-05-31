@@ -1,4 +1,4 @@
-const { Category, BlogPost, User } = require('../models');
+const { BlogPost, User } = require('../models');
 
 const getAllPostCategories = async () => {
     const postCategory = await BlogPost.findAll({ include: {

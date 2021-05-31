@@ -1,4 +1,3 @@
-const { Sequelize } = require('sequelize');
 const { BlogPost, Category, User, PostsCategories } = require('../models');
 const helper = require('../helpers/isValid');
 
@@ -24,16 +23,14 @@ const createBlogPost = async (payload) => {
 };
 
 const getPosts = async () => {
-    // const posts = await BlogPost.findAll({ include: { 
-    //     model: User, as: 'user', attributes: { exclude: ['password'] },
-    //  } }, { });
-
     const posts = await BlogPost.findAll({
-        include: [{
-            model: User, 
-            as: 'user',
-        }],
+       include: [{ association: 'user', required: true, attributes: { exclude: ['password'] } }, 
+                 { association: 'categories',
+                   required: true,
+                   through: { attributes: [] },
+                 }],
     });
+
     return posts;
 };
 

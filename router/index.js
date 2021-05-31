@@ -12,7 +12,7 @@ const auth = require('../auth/jwtValidator');
 const router = Router();
 
 // router.get('/', userController.getUsersController);
-router.get('/post', getPosts.getPosts);
+router.get('/post', auth, getPosts.getPosts);
 router.post('/categories', auth, 
                            validation.fieldNameIsRequired, 
                            categoryController.createCategory);
