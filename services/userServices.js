@@ -4,7 +4,7 @@ const helper = require('../helpers/isValid');
 
 const getUserPostOnServices = async (id) => {
     const userPost = await User.findByPk(id, {
-       include: { model: BlogPost, as: 'blogposts' },
+       include: { model: BlogPost, as: 'post' },
     });
     return userPost;
 };

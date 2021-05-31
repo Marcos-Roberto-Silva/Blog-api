@@ -19,12 +19,21 @@ const createBlogPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
-    const post = await blogPostService.getPosts();
-    console.log(post);
+    const posts = await blogPostService.getPosts();
+    res.status(200).json(posts);
+};
+
+const getPostById = async (req, res) => {
+    const { id } = req.params;
+    const post = await blogPostService.getPostById(id);
+    if (post === null) {
+      return res.status(404).json({ message: 'Post does not exist' });
+    }
     res.status(200).json(post);
 };
 
 module.exports = {
     createBlogPost,
     getPosts,
+    getPostById,
 };

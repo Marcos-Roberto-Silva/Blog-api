@@ -34,7 +34,19 @@ const getPosts = async () => {
     return posts;
 };
 
+const getPostById = async (postId) => {
+    const post = await BlogPost.findByPk(postId, {
+        include: [{ association: 'user', required: true, attributes: { exclude: ['password'] } }, 
+                  { association: 'categories',
+                    required: true,
+                    through: { attributes: [] },
+                  }],
+     });
+    return post;
+};
+
 module.exports = {
     createBlogPost,
     getPosts,
+    getPostById,
 };
