@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const secret = 'nk-myt67/34';
+const secret = process.env.SECRET_PASS;
+console.log('my secret', secret);
 
 const jwtFunc = async (user) => {
     const jwtConfig = {

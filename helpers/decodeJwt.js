@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const decodeJwt = (token) => {
-    const secret = 'nk-myt67/34';
+    const secret = process.env.SECRET_PASS;
     const decode = jwt.verify(token, secret);
     return decode;
 };
