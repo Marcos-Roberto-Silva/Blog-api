@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const secret = process.env.SECRET_PASS;
+// const secret = process.env.SECRET_PASS;
+const secret = 'doNotDoItAtHomeKids';
 console.log('my secret', secret);
 
 const jwtFunc = async (user) => {
@@ -10,7 +11,7 @@ const jwtFunc = async (user) => {
         algorithm: 'HS256',
     };
 
-    const payload = { 
+    const payload = {
         data: user,
      };
 
